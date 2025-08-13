@@ -1,0 +1,11 @@
+/* body {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900'><defs><linearGradient id='darkGrad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%23101024'/><stop offset='100%' stop-color='%23203050'/></linearGradient></defs><rect width='1440' height='900' fill='url(%23darkGrad)'/><circle cx='300' cy='200' r='250' fill='rgba(255,255,255,0.05)'/><circle cx='1100' cy='700' r='300' fill='rgba(255,255,255,0.03)'/><ellipse cx='700' cy='500' rx='500' ry='200' fill='rgba(255,255,255,0.02)'/></svg>");
+} */
+
+body {
+    background-image: url('../back.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* or contain */
+    background-position: center center;
+}

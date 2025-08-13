@@ -1,0 +1,68 @@
+/* Full page background */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Glassmorphism Card */
+.signup-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 90%;
+    max-width: 420px;
+    margin: 1rem;
+}
+
+/* Input Fields */
+.signup-card input {
+    border-radius: 12px;
+    padding: 10px 15px;
+}
+
+/* Button */
+.signup-card button {
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: bold;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.signup-card button:hover {
+    transform: scale(1.03);
+    background-color: #ffcd39;
+}
+
+/* Links */
+.signup-card a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.signup-card a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Optimization */
+@media (max-width: 576px) {
+    .signup-card {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .signup-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .signup-card input,
+    .signup-card button {
+        font-size: 0.9rem;
+    }
+}

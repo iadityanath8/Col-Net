@@ -1,0 +1,76 @@
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Background SVG wave */
+    .bg-wave {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        z-index: 0;
+    }
+
+    /* Login Card */
+    .login-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        width: 90%;
+        max-width: 420px;
+        margin: 1rem;
+    }
+
+    /* Inputs */
+    .login-card input {
+        border-radius: 12px;
+        padding: 10px 15px;
+    }
+
+    /* Button */
+    .login-card button {
+        border-radius: 12px;
+        padding: 10px;
+        font-weight: bold;
+        transition: transform 0.2s ease, background 0.3s ease;
+    }
+
+    .login-card button:hover {
+        transform: scale(1.03);
+        background-color: #ffcd39;
+    }
+
+    /* Links */
+    .login-card a {
+        color: #fff;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .login-card a:hover {
+        text-decoration: underline;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 576px) {
+        .login-card {
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+
+        .login-card h2 {
+            font-size: 1.5rem;
+        }
+
+        .login-card input,
+        .login-card button {
+            font-size: 0.9rem;
+        }
+    }

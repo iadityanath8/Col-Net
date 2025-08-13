@@ -8,11 +8,15 @@ include './includes/auth.php';
     <?php include './components/create_post.php'; ?>
 
     <div class="d-flex justify-content-between align-items-center mt-5">
-        <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> 👋</h2>
+        <h2 class="text-dark">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> 👋</h2>
     </div>
     <hr>
 
-    <?php include './components/post_feed.php' ?>
+
+    <?php
+    $show_user_profile = false;
+    include './components/post_feed.php';
+    ?>
 </div>
 
 <?php include './includes/footer.php'; ?>
