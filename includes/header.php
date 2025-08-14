@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    
+
 
     <script>
         document.addEventListener('alpine:init', () => {
@@ -108,6 +108,47 @@
 
                 add(post) {
                     this.items.unshift(post);
+                },
+
+                async deletePost(postId) {
+                    try {
+                        const modalEl = document.getElementById(`editPostModal-${postId}`);
+                        if (modalEl) {
+                            const modalInstance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+                            modalInstance.hide();
+
+                            await new Promise(resolve => {
+                                modalEl.addEventListener('hidden.bs.modal', resolve, {
+                                    once: true
+                                });
+                            });
+                        }
+                        this.items = this.items.filter(p => p.id !== postId);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                },
+
+                async deletePostUP(postId) {
+                    try {
+                        const formdata = new FormData();
+                        formdata.append("post_id", postId);
+                        const res = await fetch('./api/delete_action.php', {
+                            method: "POST",
+                            body: formdata
+                        });
+
+                        const data = await res.json();
+                        if (data.success) {
+                            this.items = this.items.filter(p => p.id !== postId);
+                        } else {
+                            alert(data.message || "Failed to delete the post");
+                        }
+
+                    } catch (e) {
+                        console.error("Error deleting post:", e);
+                        alert("Something went wrong while deleting the post.");
+                    }
                 }
             });
         });

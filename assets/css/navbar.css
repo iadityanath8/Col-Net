@@ -1,0 +1,71 @@
+/* Navbar hover & active */
+.navbar-nav .nav-link {
+    color: white;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+    transform: scale(1.1);
+}
+
+/* Search input */
+.input-group .form-control {
+    min-width: 100px;
+}
+
+.input-group .form-control:focus {
+    box-shadow: 0 0 5px #ffc107;
+    border-color: #ffc107;
+    outline: none;
+}
+
+.input-group .input-group-text {
+    border-radius: 50px 0 0 50px;
+}
+
+/* Buttons hover */
+.btn-outline-warning:hover {
+    background-color: #ffc107;
+    color: #000;
+    transition: 0.3s;
+}
+
+.btn-warning:hover {
+    background-color: #ffcd39;
+    transition: 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #ff6650;
+    transition: 0.3s;
+}
+
+/* Navbar shadow & glass effect */
+.navbar {
+    backdrop-filter: blur(10px);
+}
+
+/* Mobile spacing */
+@media (max-width: 991px) {
+    .input-group {
+        width: 100%;
+    }
+
+    .input-group .form-control {
+        flex: 1 1 auto;
+    }
+
+    .input-group .input-group-text {
+        border-radius: 50px 0 0 50px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .navbar-nav {
+        gap: 0.5rem !important;
+    }
+}

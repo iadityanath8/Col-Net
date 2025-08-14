@@ -8,8 +8,6 @@ $user = mysqli_fetch_assoc($result);
 
 ?>
 
-
-
 <div class="container mt-4">
     <div class="card shadow-sm border-0">
         <div class="card-body">
