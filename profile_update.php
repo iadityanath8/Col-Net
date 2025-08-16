@@ -15,27 +15,26 @@ $user = mysqli_fetch_assoc($result);
 <script src="https://unpkg.com/feather-icons"></script>
 <link rel="stylesheet" href="./assets/css/profile_update.css">
 
-
-
 <div class="container py-5">
     <div class="profile-card mx-auto">
-        <div class="row g-5">
-            <!-- Left Side -->
-            <div class="col-md-4 text-center">
-                <div class="profile-pic-wrapper">
-                    <img src="<?= !empty($user['photo']) ? htmlspecialchars($user['photo']) : 'https://via.placeholder.com/150' ?>"
-                        id="preview" class="profile-pic" alt="Profile Picture">
-                    <div class="edit-icon" onclick="document.getElementById('photoInput').click()">
-                        <i data-feather="camera" style="color: white;"></i>
+        <form action="./api/profile_update_action.php" method="POST" enctype="multipart/form-data">
+            <div class="row g-5">
+                <!-- Left Side -->
+                <div class="col-md-4 text-center">
+                    <div class="profile-pic-wrapper">
+                        <img src="<?= !empty($user['photo']) ? htmlspecialchars($user['photo']) : 'https://via.placeholder.com/150' ?>"
+                            id="preview" class="profile-pic" alt="Profile Picture">
+                        <div class="edit-icon" onclick="document.getElementById('photoInput').click()">
+                            <i data-feather="camera" style="color: white;"></i>
+                        </div>
+                        <input type="file" id="photoInput" name="photo" accept="image/*" style="display:none" onchange="previewImage(event)">
                     </div>
                 </div>
-                <input type="file" id="photoInput" name="photo" accept="image/*" style="display:none" onchange="previewImage(event)">
-            </div>
 
-            <!-- Right Side -->
-            <div class="col-md-8">
-                <h4 class="fw-bold mb-4">Edit Profile</h4>
-                <form action="./api/profile_update_action.php" method="POST" enctype="multipart/form-data">
+                <!-- Right Side -->
+                <div class="col-md-8">
+                    <h4 class="fw-bold mb-4">Edit Profile</h4>
+
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Name</label>
                         <input type="text" name="name" value="<?= htmlspecialchars($user['name']) ?>" class="form-control" required>
@@ -69,9 +68,9 @@ $user = mysqli_fetch_assoc($result);
                             Save Changes
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
@@ -79,6 +78,7 @@ $user = mysqli_fetch_assoc($result);
     feather.replace();
 
     function previewImage(event) {
-        document.getElementById('preview').src = URL.createObjectURL(event.target.files[0]);
+        const preview = document.getElementById('preview');
+        preview.src = URL.createObjectURL(event.target.files[0]);
     }
 </script>

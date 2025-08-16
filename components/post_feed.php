@@ -30,8 +30,13 @@
     }
 </style>
 
+<?php
+$user_id = $_SESSION['user_id'];
+?>
+
 <div x-data="{
         activePost: null,
+        ssid: <?= json_encode((int)$user_id); ?>,
         showCommentBox(post) {
             
             if (this.activePost && this.activePost.id === post.id) {
@@ -70,9 +75,12 @@
 
                 <!-- DropDown -->
                 <div class="ms-auto dropdown">
-                    <button class="btn btn-sm btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
+
+                    <template x-if="post.user_id == ssid">
+                        <button class="btn btn-sm btn-light rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </template>
 
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
@@ -83,7 +91,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item text-danger" @click.prevent = "$store.posts.deletePostUP(post.id)">
+                            <a class="dropdown-item text-danger" @click.prevent="$store.posts.deletePostUP(post.id)">
                                 <i class="fas fa-trash me-2"></i> Delete
                             </a>
                         </li>

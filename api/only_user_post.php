@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                    p.created_at, 
                    u.name, 
                    u.photo, 
+                   u.id AS user_id,
                    (SELECT COUNT(*) FROM likes WHERE post_id = p.id) AS like_count,
                    EXISTS(SELECT 1 FROM likes WHERE post_id = p.id AND user_id = $user_id) AS liked_by_user
                    FROM posts p
@@ -38,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             "photo" => $row['photo'],
             "content" => $row['content'],
             "image" => $row['image'],
+            "user_id" => $row['user_id'],
             "created_at" => $row['created_at'],
             "like_count" => (int)$row['like_count'],
             "liked_by_user" => (bool)$row['liked_by_user']

@@ -47,6 +47,7 @@
                             if (!res.ok) throw new Error('Failed to fetch posts');
                             const data = await res.json();
                             this.items = data.posts;
+                            console.log(this.items);
                         } catch (e) {
                             this.error = e.message;
                         }

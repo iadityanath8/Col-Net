@@ -54,12 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         exit;
     }
 
+    $name = $_SESSION['username'];
     $comment = [
         "id" => $id,
         "post_id" => $post_id,
         "user_id" => $user_id,
         "content" => $content,
         "photo"   => $userPhoto,
+        "name"  => $name,
         "created_at" => date('Y-m-d H:i:s')
     ];
 
